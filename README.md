@@ -49,3 +49,14 @@ Our coding standard was as follows:
 -	Line by line comments are identified with a semicolon ( ; )
 
 Code organization prioritizes first: major entry points and top-to-bottom execution (ie, minimize unnecessary, repetitive jumps up in code). Second: relation of tasks (ie, organization of ideas by conceptual topic), this was for readability and maintenance as the code grew and has nothing to do with optimization. For example, top to bottom, Opcode.X68 starts with the highest level of subdivision, next are the 2ndary subdividers that ultimately discover which possible opcode the word is, last is the actual decoding of each type of opcode. I like to think of this as “locality of ideas”. The third prioritization is “global helper methods” ie, intended for use across files. Examples are ADD2BUFFER, HexToAscii, BADFLAG, etc. The last forth prioritization is for file specific “helper methods” which are not intended for use in other files and were scoped as needed, not by design. Main contains all variables, buffers, and constants/strings used in the entirety of the program at the bottom.
+
+### Flow Charts
+Below are the flow charts created for this project. They are not exhaustive.
+
+![image](https://user-images.githubusercontent.com/36549707/123370151-625dca80-d53c-11eb-9df2-28c752a70f38.png)
+
+![image](https://user-images.githubusercontent.com/36549707/123370196-773a5e00-d53c-11eb-956e-7c1599d18128.png)
+
+![image](https://user-images.githubusercontent.com/36549707/123370209-7f929900-d53c-11eb-99b6-65938ac5bfae.png)
+
+![image](https://user-images.githubusercontent.com/36549707/123370227-86b9a700-d53c-11eb-8ed1-462d59dc2cf3.png)

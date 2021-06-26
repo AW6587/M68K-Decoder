@@ -1,9 +1,6 @@
 # M68k Disassembler 
-## Project Specification
-Midori Williams
-3/17/2019
 
-### Program Overview
+## Program Overview
 Our disassembler is comprised of 4 files: Main.X68, Opcode.X68, EA.X68, and Config.cfg. Program flow starts in Main. Opcode and EA are included into memory at address $1500 (the memory space physically following the Main section ORGed at $1000). After this, the first command branches to the actual beginning of the disassembler, as specified.
 
 The first 8 bytes (ascii) are read from Config.cfg, converted to a 4 byte hexadecimal starting address (using the provided AsciiToHex method) and loaded into A3. After discarding 2 bytes for a carriage return and line feed, the 2nd 8 bytes are read from the file, converted, and loaded into A5 as the ending address. The program now begins the DISLOOP. The printBuffer is loaded into A1, the address in A3 is converted to an ascii string by jumping to subroutine HexToAsciia which loads the converted string into hex2ascBuffer. This buffer is loaded into A0, then appended to the head of printBuffer by jumping to subroutine ADD2BUFFER. The good flag is set to 1 (good) and the start and end address are compared to ensure start adr < end addr. If false, the program branches to ENDPROG and halts the simulator. If true, program flow continues on to Opcode.X68. 
@@ -31,14 +28,14 @@ Back in Main, the good flag is compared to 1.
 
 In either case, the program loops back to the begining to make the same address comparison again.
 
-### Usage Directions
+## Usage Directions
 Main.X68, Opcode.X68, and EA.X68 must be opened in the same program window. Main contains include statements to load the other two files into memory, so it must be the one executed.
 
 Config.cfg must be located in the same file storage location as the others. The format of config is expected to be an 8 number long string, followed by a carriage return / line feed, then another 8 number long string (totally 18 bytes). If the two numbers are formatted in any other way, the program will not read the start and end address correctly.
 
 The program Main initially ORGs at $1500 to load the other two files into memory, then ORGs the remaining (working) code at $1000. This should not be a problem under current project specifications. I’ve also verified that memory space between $9000 onward is free for the graders testing program to be used. 
 
-### Code Standards
+## Code Standards
 Our coding standard was as follows:
 -	68k opcodes and registers are in all caps
 -	Leading or “parent” subroutines/methods for general use are in all caps, making them easier to identify
@@ -50,7 +47,7 @@ Our coding standard was as follows:
 
 Code organization prioritizes first: major entry points and top-to-bottom execution (ie, minimize unnecessary, repetitive jumps up in code). Second: relation of tasks (ie, organization of ideas by conceptual topic), this was for readability and maintenance as the code grew and has nothing to do with optimization. For example, top to bottom, Opcode.X68 starts with the highest level of subdivision, next are the 2ndary subdividers that ultimately discover which possible opcode the word is, last is the actual decoding of each type of opcode. I like to think of this as “locality of ideas”. The third prioritization is “global helper methods” ie, intended for use across files. Examples are ADD2BUFFER, HexToAscii, BADFLAG, etc. The last forth prioritization is for file specific “helper methods” which are not intended for use in other files and were scoped as needed, not by design. Main contains all variables, buffers, and constants/strings used in the entirety of the program at the bottom.
 
-### Flow Charts
+## Flow Charts
 Below are the flow charts created for this project. They are not exhaustive.
 
 ![image](https://user-images.githubusercontent.com/36549707/123495813-7e1bac00-d5e2-11eb-95f3-f9faef5dfe70.png)

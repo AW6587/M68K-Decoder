@@ -1,6 +1,5 @@
 *-----------------------------------------------------------
 * Title      :  EA decoder
-* Written by :  Midori Williams
 * Date       :  3/9/19
 * Description:  3rd file in a Dissasembler reads Opword bits
 * 0-5 to determine EA Mode and Xn, returns control to caller

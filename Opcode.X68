@@ -1,6 +1,5 @@
 *-----------------------------------------------------------
 * Title      : Opcodes
-* Written by : Midori Williams
 * Date       : 3/6/19
 * Description: 2nd file in a Dissasembler reads Opword bits
 * 6-15 to determine the Opcode, returns control to caller in Main.X68
